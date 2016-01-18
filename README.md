@@ -1,5 +1,7 @@
 # TISCON pre
 
+![](https://circleci.com/gh/tiscon/tiscon1-pre.svg?style=shield&circle-token=8f99c0e6c923ca570acda8c3640446fdacad2a47)
+
 ECサイトのExampleアプリケーションです。
 現段階ではユーザ登録、ログイン/ログアウトのみ実装してあります。
 
@@ -32,7 +34,7 @@ Mavenで`waitt:run`を実行します。10秒ほどでアプリケーション�
 WAITTに関しては下記記事をお読みください。
 
 http://qiita.com/kawasima/items/1d4daed6f980b4bfbee3
-
+
 ## tiscon1-preの構成
 
 ```
@@ -55,5 +57,4 @@ tiscon1-pre
 
 ## Heroku
 
-未動作
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
