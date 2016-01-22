@@ -9,5 +9,7 @@ import java.util.List;
  */
 public interface GenreRepository {
     List<Genre> findAll();
+    List<Genre> findMovieGenres();
+    List<Genre> findMusicGenres();
     Genre findByCd(String cd);
 }
