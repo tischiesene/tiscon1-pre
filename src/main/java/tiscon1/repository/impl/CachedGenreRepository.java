@@ -25,6 +25,8 @@ public class CachedGenreRepository implements GenreRepository {
     private List<Genre> movieGenres;
     private List<Genre> musicGenres;
 
+    private static final String MOVIE_ID = "33";
+    private static final String MUSIC_ID = "34";
     /**
      * 社内での開発の際必要となるプロキシ設定。
      * @return 社内用プロキシが設定されたrestTemplate
@@ -95,6 +97,35 @@ public class CachedGenreRepository implements GenreRepository {
     @Override
     public List<Genre> findMusicGenres() {
         return musicGenres;
+    }
+
+    @Override
+    public String getGenreName(String genreId) {
+        if(genreId.equals(MOVIE_ID)) {
+            return "MOVIE";
+        } else if(genreId.equals(MUSIC_ID)) {
+            return "MUSIC";
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public String getSubGenreName(String genreId, String subgenreId) {
+        if(genreId.equals(MOVIE_ID)) {
+            for (Genre g : findMovieGenres()) {
+                if (g.getId().equals(subgenreId)) {
+                    return g.getName();
+                }
+            }
+        } else if(genreId.equals(MUSIC_ID)) {
+            for (Genre g : findMusicGenres()) {
+                if (g.getId().equals(subgenreId)) {
+                    return g.getName();
+                }
+            }
+        }
+        return null;
     }
 
     @Override

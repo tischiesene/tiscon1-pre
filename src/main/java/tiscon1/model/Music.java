@@ -14,22 +14,7 @@ import java.io.Serializable;
  */
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
-public class Music implements Serializable {
-    @NonNull
-    private String id;
-
-    private String title;
-
-    private String image;
-
+public class Music extends Item {
     private String artist;
-
     private String album;
-
-    private String price;
-
-    private String genre;
-
-    private String releaseDate;
 }

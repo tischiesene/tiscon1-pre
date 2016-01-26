@@ -86,25 +86,26 @@ _________________________________________________________ -->
                         <div class="product">
                             <div class="flip-container">
                                 <div align="center">
+                                    <p><h4>${item?counter}位</h4></p>
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="detail?genreId=33&subgenreId=&id=${item.id}">
+                                            <a href="/detail?genreId=33&subgenreId=&itemId=${item.id}">
                                                 <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="detail?genreId=33&subgenreId=&id=${item.id}">
+                                            <a href="/detail?genreId=33&subgenreId=&itemId=${item.id}">
                                                 <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="detail?genreId=33&subgenreId=&id=${item.id}" class="invisible">
+                            <a href="/detail?genreId=33&subgenreId=&itemId=${item.id}" class="invisible">
                                 <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
                             </a>
                             <div class="text">
-                                <h3><a href="detail?genreId=33&subgenreId=&id=${item.id}">${item.title?html}</a></h3>
+                                <h3><a href="/detail?genreId=33&subgenreId=&itemId=${item.id}">${item.title?html}</a></h3>
                                 <p class="price">￥${item.price}</p>
                             </div>
                             <!-- /.text -->
@@ -132,25 +133,26 @@ _________________________________________________________ -->
                         <div class="product">
                             <div class="flip-container">
                                 <div align="center">
+                                    <p><h4>${item?counter}位</h4></p>
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="detail?genreId=34&subgenreId=&id=${item.id}">
+                                            <a href="/detail?genreId=34&subgenreId=&itemId=${item.id}">
                                                 <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="detail?genreId=34&subgenreId=&id=${item.id}">
+                                            <a href="/detail?genreId=34&subgenreId=&itemId=${item.id}">
                                                 <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="detail?genreId=34&subgenreId=&id=${item.id}" class="invisible">
+                            <a href="/detail?genreId=34&subgenreId=&itemId=${item.id}" class="invisible">
                                 <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
                             </a>
                             <div class="text">
-                                <h3><a href="detail?genreId=34&subgenreId=&id=${item.id}">${item.title?html}</a></h3>
+                                <h3><a href="/detail?genreId=34&subgenreId=&itemId=${item.id}">${item.title?html}</a></h3>
                                 <p class="price">￥${item.price}</p>
                             </div>
                             <!-- /.text -->
@@ -169,32 +171,4 @@ _________________________________________________________ -->
 
     <!-- *** HOT END *** -->
 
-    <!-- *** GET INSPIRED ***
-_________________________________________________________ -->
-    <div class="container" data-animate="fadeInUpBig">
-        <div class="col-md-12">
-            <div class="box slideshow">
-                <h3>Get Inspired</h3>
-                <p class="lead">Get the inspiration from our world class designers</p>
-                <div id="get-inspired" class="owl-carousel owl-theme">
-                    <div class="item">
-                        <a href="#">
-                            <img src="img/getinspired1.jpg" alt="Get inspired" class="img-responsive">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <img src="img/getinspired2.jpg" alt="Get inspired" class="img-responsive">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <img src="img/getinspired3.jpg" alt="Get inspired" class="img-responsive">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- *** GET INSPIRED END *** -->
 </@layout.layout>

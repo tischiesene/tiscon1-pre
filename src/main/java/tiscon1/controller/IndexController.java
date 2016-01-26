@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import tiscon1.exception.SystemException;
 import tiscon1.model.Genre;
 import tiscon1.repository.CategoryRepository;
 import tiscon1.repository.GenreRepository;
@@ -17,22 +18,19 @@ import java.util.List;
  */
 @Controller
 public class IndexController {
+    private static final String MOVIE_ID = "33";
+    private static final String MUSIC_ID = "34";
+
     @Autowired
     CategoryRepository categoryRepository;
-    @Autowired
-    GenreRepository genreRepository;
 
     @RequestMapping("/")
     public String index(Model model) {
         try {
-            model.addAttribute("movieRank", categoryRepository.findMovieTop10("33", null));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            model.addAttribute("musicRank", categoryRepository.findMusicTop10("34", null));
-        } catch (IOException e) {
-            e.printStackTrace();
+            model.addAttribute("movieRank", categoryRepository.findTop10(MOVIE_ID, null));
+            model.addAttribute("musicRank", categoryRepository.findTop10(MUSIC_ID, null));
+        } catch (Exception e) {
+            throw new SystemException();
         }
         return "index";
     }

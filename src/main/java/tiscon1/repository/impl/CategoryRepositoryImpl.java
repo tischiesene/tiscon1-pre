@@ -6,6 +6,8 @@ import org.springframework.http.*;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import tiscon1.exception.SystemException;
+import tiscon1.model.Item;
 import tiscon1.model.Movie;
 import tiscon1.model.Music;
 import tiscon1.repository.CategoryRepository;
@@ -27,6 +29,8 @@ import java.util.stream.Collectors;
 @Component
 public class CategoryRepositoryImpl implements CategoryRepository {
     /** 検索用APIアドレス */
+    public static final String MOVIE_ID = "33";
+    public static final String MUSIC_ID = "34";
     static final String SEARCH_URL = "https://itunes.apple.com/jp/rss/";
     static final String LOOKUP_ID_URL = "https://itunes.apple.com/lookup?country=JP&id=";
 
@@ -45,70 +49,59 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
 
     @Override
-    public List<Movie> findMovieTop10(String genreId, String subgenreId) throws IOException {
-        String url = SEARCH_URL + "topmovies/limit=10/genre=" + subgenreId + "/json";
+    public List<Item> findTop10(String genreId, String subgenreId) throws IOException {
+        String url = new String();
+        if(genreId.equals(MOVIE_ID)) {
+            url = SEARCH_URL + "topmovies/limit=10/genre=" + subgenreId + "/json";
+        } else if(genreId.equals(MUSIC_ID)) {
+            url = SEARCH_URL + "topsongs/limit=10/genre=" + subgenreId + "/json";
+        }
         String jsonString = restTemplate().getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> hoge = (Map<String, Object>)mapper.readValue(jsonString, Map.class).get("feed");
-        List<Map<String, Object>> fuga = (List<Map<String, Object>>)hoge.get("entry");
+        Map<String, Object> top10Map = (Map<String, Object>)mapper.readValue(jsonString, Map.class).get("feed");
+        List<Map<String, Object>> top10List = (List<Map<String, Object>>)top10Map.get("entry");
 
-        List<Movie> movieTop10 = new ArrayList<Movie>();
-        for(Map<String, Object> mapMovie : fuga){
+        List<Item> top10 = new ArrayList<Item>();
+        for(Map<String, Object> map : top10List){
+            Map<String, Map<String, Object>> mapId = (Map<String, Map<String, Object>>)map.get("id");
+            top10.add(searchItem(genreId, (String)mapId.get("attributes").get("im:id")));
+        }
+        return top10;
+    }
+
+    public Item searchItem(String genreId, String id) throws IOException {
+        String jsonString = restTemplate().getForObject(LOOKUP_ID_URL + id, String.class);
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> mapItem = (Map<String, Object>) ((List<Object>) mapper.readValue(jsonString, Map.class).get("results")).get(0);
+
+        // 参照する画像ファイルの大きさを変更
+        String imageUrl = (String)mapItem.get("artworkUrl100");
+        imageUrl = imageUrl.replaceAll("100x100bb.jpg","400x400bb.jpg");
+
+        if (genreId.equals(MOVIE_ID)) {
             Movie movie = new Movie();
-            Map<String, Map<String, Object>> mapId = (Map<String, Map<String, Object>>)mapMovie.get("id");
-            movieTop10.add(searchMovieItem((String)mapId.get("attributes").get("im:id")));
-        }
-        return movieTop10;
-    }
-
-    @Override
-    public List<Music> findMusicTop10(String genreId, String subgenreId) throws IOException {
-        String url = SEARCH_URL + "topsongs/limit=10/genre=" + subgenreId + "/json";
-        String jsonString = restTemplate().getForObject(url, String.class);
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> hoge = (Map<String, Object>)mapper.readValue(jsonString, Map.class).get("feed");
-        List<Map<String, Object>> fuga = (List<Map<String, Object>>)hoge.get("entry");
-
-        List<Music> musicTop10 = new ArrayList<Music>();
-        for(Map<String, Object> mapMusic : fuga){
+            movie.setId(id);
+            movie.setTitle((String) mapItem.get("trackName"));
+            movie.setImage(imageUrl);
+            movie.setSummary((String) mapItem.get("longDescription"));
+            Double price = (Double)mapItem.get("collectionPrice");
+            movie.setPrice(String.valueOf(price.intValue()));
+            movie.setGenre((String) mapItem.get("primaryGenreName"));
+            movie.setReleaseDate((String) mapItem.get("releaseDate"));
+            return movie;
+        } else if (genreId.equals(MUSIC_ID)) {
             Music music = new Music();
-            Map<String, Map<String, Object>> mapId = (Map<String, Map<String, Object>>)mapMusic.get("id");
-            musicTop10.add(searchMusicItem((String)mapId.get("attributes").get("im:id")));
+            music.setId(id);
+            music.setTitle((String) mapItem.get("trackName"));
+            music.setImage(imageUrl);
+            music.setArtist((String) mapItem.get("artistName"));
+            Double price = (Double)mapItem.get("trackPrice");
+            music.setPrice(String.valueOf(price.intValue()));
+            music.setGenre((String) mapItem.get("primaryGenreName"));
+            music.setReleaseDate((String) mapItem.get("releaseDate"));
+            return music;
+        } else {
+            throw new SystemException();
         }
-        return musicTop10;
-    }
-
-    public Movie searchMovieItem(String id) throws IOException {
-        Movie movie = new Movie();
-        String jsonString = restTemplate().getForObject(LOOKUP_ID_URL + id, String.class);
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> mapMovie = (Map<String, Object>)((List<Object>)mapper.readValue(jsonString, Map.class).get("results")).get(0);
-
-        movie.setId(id);
-        movie.setTitle((String) mapMovie.get("trackName"));
-        movie.setImage((String) mapMovie.get("artworkUrl100"));
-        movie.setSummary((String) mapMovie.get("longDescription"));
-        movie.setPrice(String.valueOf(mapMovie.get("collectionPrice")));
-        movie.setGenre((String) mapMovie.get("primaryGenreName"));
-        movie.setReleaseDate((String) mapMovie.get("releaseDate"));
-
-        return movie;
-    }
-
-    public Music searchMusicItem(String id) throws IOException {
-        Music music = new Music();
-        String jsonString = restTemplate().getForObject(LOOKUP_ID_URL + id, String.class);
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> mapMusic = (Map<String, Object>)((List<Object>)mapper.readValue(jsonString, Map.class).get("results")).get(0);
-
-        music.setId(id);
-        music.setTitle((String) mapMusic.get("trackName"));
-        music.setImage((String) mapMusic.get("artworkUrl100"));
-        music.setArtist((String) mapMusic.get("artistName"));
-        music.setPrice(String.valueOf(mapMusic.get("trackPrice")));
-        music.setGenre((String) mapMusic.get("primaryGenreName"));
-        music.setReleaseDate((String) mapMusic.get("releaseDate"));
-
-        return music;
     }
 }

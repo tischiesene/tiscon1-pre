@@ -409,6 +409,11 @@ h1 {
   text-transform: uppercase;
   font-weight: bold;
 }
+#content .panel.sidebar-menu ul.nav.category-menu li active{
+  text-transform: uppercase;
+  font-weight: bold;
+  background: yellow;
+}
 #content .panel.sidebar-menu ul.nav ul {
   list-style: none;
   padding-left: 0;

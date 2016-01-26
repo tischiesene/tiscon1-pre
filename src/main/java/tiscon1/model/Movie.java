@@ -14,20 +14,6 @@ import java.io.Serializable;
  */
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
-public class Movie implements Serializable {
-    @NonNull
-    private String id;
-
-    private String title;
-
-    private String image;
-
+public class Movie extends Item {
     private String summary;
-
-    private String price;
-
-    private String genre;
-
-    private String releaseDate;
 }

@@ -1,6 +1,6 @@
 <#macro layout title="TISCON1 layout">
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
 
@@ -56,9 +56,7 @@
                     </li>
                     <li><a href="/register">Register</a>
                     </li>
-                    <li><a href="/contact">Contact</a>
-                    </li>
-                    <li><a href="#">Recently viewed</a>
+                    <li><a href="http://www.tis.co.jp/recruit/index.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -128,7 +126,8 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="/">Home</a>
+                    <li>
+                        <a href="/">Home</a>
                     </li>
                     <li class="dropdown yamm-fw">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Movie <b class="caret"></b></a>
@@ -140,7 +139,7 @@
                                             <div class="col-sm-3">
                                                 <ul>
                                                     <#list dividedMovieGenre as movie>
-                                                        <li><a href="category?genreId=33&subgenreId=${movie.id}">${movie.name}</a></li>
+                                                        <li><a href="/category?genreId=33&subgenreId=${movie.id}">${movie.name}</a></li>
                                                     </#list>
                                                 </ul>
                                             </div>
@@ -153,7 +152,7 @@
                     </li>
 
                     <li class="dropdown yamm-fw">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Music <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Music <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
@@ -162,7 +161,7 @@
                                             <div class="col-sm-3">
                                                 <ul>
                                                     <#list dividedMusicGenre as music>
-                                                        <li><a href="category?genreId=34&subgenreId=${music.id}">${music.name}</a></li>
+                                                        <li><a href="/category?genreId=34&subgenreId=${music.id}">${music.name}</a></li>
                                                     </#list>
                                                 </ul>
                                             </div>
@@ -230,13 +229,9 @@
                         <h4>Pages</h4>
 
                         <ul>
-                            <li><a href="text.html">About us</a>
+                            <li><a href="http://www.tis.co.jp/recruit/index.html">About us</a>
                             </li>
-                            <li><a href="text.html">Terms and conditions</a>
-                            </li>
-                            <li><a href="faq.html">FAQ</a>
-                            </li>
-                            <li><a href="contact.html">Contact us</a>
+                            <li><a href="http://www.tis.co.jp/recruit/index.html">Contact us</a>
                             </li>
                         </ul>
 
@@ -263,7 +258,7 @@
                         <h5>Movie</h5>
                         <ul>
                             <#list movieGenres as movie>
-                                <li><a href="category?genreId=33&subgenreId=${movie.id}">${movie.name}</a></li>
+                                <li><a href="/category?genreId=33&subgenreId=${movie.id}">${movie.name}</a></li>
                             </#list>
                         </ul>
                     </div>
@@ -272,7 +267,7 @@
                         <h5>Music</h5>
                         <ul>
                             <#list musicGenres as music>
-                                <li><a href="category?genreId=34&subgenreId=${music.id}">${music.name}</a></li>
+                                <li><a href="/category?genreId=34&subgenreId=${music.id}">${music.name}</a></li>
                             </#list>
                         </ul>
 
@@ -285,16 +280,16 @@
 
                         <h4>Where to find us</h4>
 
-                        <p><strong>Obaju Ltd.</strong>
-                            <br>13/25 New Avenue
-                            <br>New Heaven
-                            <br>45Y 73J
-                            <br>England
+                        <p><strong>TIS Inc.</strong>
+                            <br>Sumitomo Fudosan Shinjuku Grand Tower,
+                            <br>17-1,Nishishinjuku 8-chome,
+                            <br>Shinjuku-ku,Tokyo,
+                            <br>160-0023
                             <br>
-                            <strong>Great Britain</strong>
+                            <strong>Japan</strong>
                         </p>
 
-                        <a href="contact.html">Go to contact page</a>
+                        <a href="http://www.tis.co.jp/recruit/index.html">Go to contact page</a>
 
                         <hr class="hidden-md hidden-lg">
 
@@ -305,35 +300,14 @@
 
                     <div class="col-md-3 col-sm-6">
 
-                        <h4>Get the news</h4>
-
-                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-
-                        <form>
-                            <div class="input-group">
-
-                                <input type="text" class="form-control">
-
-                                <span class="input-group-btn">
-
-			    <button class="btn btn-default" type="button">Subscribe!</button>
-
-			</span>
-
-                            </div>
-                            <!-- /input-group -->
-                        </form>
-
                         <hr>
 
                         <h4>Stay in touch</h4>
 
                         <p class="social">
-                            <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
-                            <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
+                            <a href="http://www.facebook.com/tis.recruit" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+                            <a href="mailto:tis2017★s-hr.jp" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
+                            <h6>メールアドレスの★を@に変換してください。</h6>
                         </p>
 
 

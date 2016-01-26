@@ -1,5 +1,6 @@
 package tiscon1.repository;
 
+import tiscon1.model.Item;
 import tiscon1.model.Movie;
 import tiscon1.model.Music;
 
@@ -10,8 +11,6 @@ import java.util.List;
  * @author fujiwara
  */
 public interface CategoryRepository {
-    List<Movie> findMovieTop10(String genre, String genreId) throws IOException;
-    List<Music> findMusicTop10(String genre, String genreId) throws IOException;
-    Movie searchMovieItem(String id) throws IOException;
-    Music searchMusicItem(String id) throws IOException;
+    List<Item> findTop10(String genreId, String subgenreId) throws IOException;
+    Item searchItem(String genreId, String id) throws IOException;
 }

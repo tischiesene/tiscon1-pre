@@ -11,10 +11,10 @@
                     <ul class="breadcrumb">
                         <li><a href="/">Home</a></li>
                         <#if genreName?has_content>
-                            <li><a href="category?genreId=${genreId}&subgenreId=">${genreName} </a></li>
+                            <li><a href="/category?genreId=${genreId}&subgenreId=">${genreName} </a></li>
                         </#if>
                         <#if subgenreName?has_content>
-                            <li><a href="category?genreId=${genreId}&subgenreId=${subgenreId}">${subgenreName} </a></li>
+                            <li><a href="/category?genreId=${genreId}&subgenreId=${subgenreId}">${subgenreName} </a></li>
                         </#if>
                         <#if item.title?has_content>
                             <li>${item.title} </li>
@@ -39,10 +39,10 @@
                                 <#else>
                                     <li>
                                 </#if>
-                                        <a href="category?genreId=33&subgenreId=">MOVIE </a>
+                                        <a href="/category?genreId=33&subgenreId=">MOVIE </a>
                                         <ul>
                                             <#list movieGenres as movie>
-                                                <li><a href="category?genreId=33&subgenreId=${movie.id}">${movie.name?html}</a></li>
+                                                <li><a href="/category?genreId=33&subgenreId=${movie.id}">${movie.name?html}</a></li>
                                             </#list>
                                         </ul>
                                     </li>
@@ -51,10 +51,10 @@
                                 <#else>
                                     <li>
                                 </#if>
-                                        <a href="category?genreId=34&subgenreId=">MUSIC </a>
+                                        <a href="/category?genreId=34&subgenreId=">MUSIC </a>
                                         <ul>
                                             <#list musicGenres as music>
-                                                <li><a href="category?genreId=34&subgenreId=${music.id}">${music.name?html}</a></li>
+                                                <li><a href="/category?genreId=34&subgenreId=${music.id}">${music.name?html}</a></li>
                                             </#list>
                                         </ul>
                                     </li>
@@ -72,7 +72,7 @@
 
                     <div class="banner">
                         <a href="#">
-                            <a href="http://www.tis.co.jp/recruit/"><img src="img/TIS_RECRUITING.png" alt="TIS_RECRUITING" class="img-responsive"></a>
+                            <a href="http://www.tis.co.jp/recruit/"><img src="http://www.tis.co.jp/recruit/images/mv/mv01.jpg" alt="TIS_RECRUITING" class="img-responsive"></a>
                         </a>
                     </div>
                 </div>
@@ -127,10 +127,8 @@
                             <div class="social">
                                 <h4>Show it to your friends</h4>
                                 <p>
-                                    <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                                    <a href="http://www.facebook.com/dialog/feed?app_id=419866574778905&picture=${item.image}&name=My favorite ${genreName}! - ${item.title}&display=page" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                                    <a href="http://twitter.com/share?text=My favorite ${genreName}! - ${item.title}" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
                                 </p>
                             </div>
                     </div>
