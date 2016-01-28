@@ -52,7 +52,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         // プロキシ設定が不要の場合
         RestTemplate rest = new RestTemplate();
         // プロキシ設定が必要の場合
-        // RestTemplate rest = myRest("tkyproxy.intra.tis.co.jp", 8080);
+        // RestTemplate rest = myRest("proxy.co.jp", 8080);
 
         String url = new String();
         if(genreId.equals(MOVIE_ID)) {
