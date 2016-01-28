@@ -1,1 +1,15 @@
-/** Your theme modifications here **/
+.img-index-music {
+    height : 150px;
+}
+
+.img-index-movie {
+    height : 250px;
+}
+
+.img-category-list {
+    height : 250px;
+}
+
+#content .product .text h3.text-category-list-title {
+    height : 60px;
+}

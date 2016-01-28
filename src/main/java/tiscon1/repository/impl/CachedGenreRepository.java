@@ -52,9 +52,9 @@ public class CachedGenreRepository implements GenreRepository {
         final String MAP_GENRES = "https://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/genres?cc=jp";
 
         Map<String, Map<String, Object>> mapGenres = rest.getForObject(MAP_GENRES, Map.class);
-        Map<String, Map<String, Map<String, Map<String, Object>>>> mapMovies = rest.getForObject(MAP_GENRES+"&id=33", Map.class);
+        Map<String, Map<String, Map<String, Map<String, Object>>>> mapMovies = rest.getForObject(MAP_GENRES+"&id="+MOVIE_ID, Map.class);
         String temp = rest.getForObject(MAP_GENRES+"&id=33", String.class);
-        Map<String, Map<String, Map<String, Map<String, Object>>>> mapMusic =  rest.getForObject(MAP_GENRES+"&id=34", Map.class);
+        Map<String, Map<String, Map<String, Map<String, Object>>>> mapMusic =  rest.getForObject(MAP_GENRES+"&id="+MUSIC_ID, Map.class);
 
 
         genres = mapGenres.values().stream()

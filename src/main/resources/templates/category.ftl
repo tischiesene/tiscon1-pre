@@ -108,22 +108,22 @@
                                         <div class="flipper">
                                             <div class="front">
                                                 <a href="/detail?genreId=${genreId}&subgenreId=${subgenreId}&itemId=${item.id}">
-                                                    <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
+                                                    <img src=${item.image} alt=${item.title?html} class="img-responsive img-category-list">
                                                 </a>
                                             </div>
                                             <div class="back">
                                                 <a href="/detail?genreId=${genreId}&subgenreId=${subgenreId}&itemId=${item.id}">
-                                                    <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
+                                                    <img src=${item.image} alt=${item.title?html} class="img-responsive img-category-list">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="/detail?genreId=${genreId}&subgenreId=${subgenreId}&itemId=${item.id}" class="invisible">
-                                    <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
+                                    <img src=${item.image} alt=${item.title?html} class="img-responsive img-category-list">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="/detail?genreId=${genreId}&subgenreId=${subgenreId}&itemId=${item.id}">${item.title}</a></h3>
+                                    <h3 class="text-category-list-title"><a href="/detail?genreId=${genreId}&subgenreId=${subgenreId}&itemId=${item.id}">${item.title}</a></h3>
                                     <p class="price">￥${item.price}</p>
                                     <p class="buttons">
                                         <a href="/detail?genreId=${genreId}&subgenreId=${subgenreId}&itemId=${item.id}" class="btn btn-default">View detail</a>
@@ -131,8 +131,6 @@
                                     </p>
                                 </div>
                                 <!-- /.text -->
-
-                                <!-- /.ribbon -->
                             </div>
                             <!-- /.product -->
                         </div>

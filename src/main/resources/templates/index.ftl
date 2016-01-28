@@ -90,19 +90,19 @@ _________________________________________________________ -->
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="/detail?genreId=33&subgenreId=&itemId=${item.id}">
-                                                <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
+                                                <img src=${item.image} alt=${item.title?html} class="img-responsive img-index-movie">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="/detail?genreId=33&subgenreId=&itemId=${item.id}">
-                                                <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
+                                                <img src=${item.image} alt=${item.title?html} class="img-responsive img-index-movie">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <a href="/detail?genreId=33&subgenreId=&itemId=${item.id}" class="invisible">
-                                <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
+                                <img src=${item.image} alt=${item.title?html} class="img-responsive img-index-movie">
                             </a>
                             <div class="text">
                                 <h3><a href="/detail?genreId=33&subgenreId=&itemId=${item.id}">${item.title?html}</a></h3>
@@ -137,19 +137,19 @@ _________________________________________________________ -->
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="/detail?genreId=34&subgenreId=&itemId=${item.id}">
-                                                <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
+                                                <img src=${item.image} alt=${item.title?html} class="img-responsive img-index-music">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="/detail?genreId=34&subgenreId=&itemId=${item.id}">
-                                                <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
+                                                <img src=${item.image} alt=${item.title?html} class="img-responsive img-index-music" >
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <a href="/detail?genreId=34&subgenreId=&itemId=${item.id}" class="invisible">
-                                <img src=${item.image} alt=${item.title?html} width="150" class="img-responsive">
+                                <img src=${item.image} alt=${item.title?html} class="img-responsive img-index-music">
                             </a>
                             <div class="text">
                                 <h3><a href="/detail?genreId=34&subgenreId=&itemId=${item.id}">${item.title?html}</a></h3>
