@@ -27,27 +27,26 @@ public class CachedGenreRepository implements GenreRepository {
 
     private static final String MOVIE_ID = "33";
     private static final String MUSIC_ID = "34";
+
     /**
-     * 社内での開発の際必要となるプロキシ設定。
-     * @return 社内用プロキシが設定されたrestTemplate
-     * @note 社内の設定のためpushしない！！
+     * プロキシ設定を必要とする場合のRestTemplate生成メソッド。
+     * @param host ホスト名
+     * @param portNo ポート番号
+     * @return プロキシが設定されたrestTemplate
      */
-    private RestTemplate restTemplate() {
-        final String PROXY_HOST = "tkyproxy.intra.tis.co.jp";
-        final int PROXY_PORT = 8080;
+    private RestTemplate myRest(String host, int portNo) {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        factory.setProxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(PROXY_HOST, PROXY_PORT)));
+        factory.setProxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host, portNo)));
 
         return new RestTemplate(factory);
     }
 
     @PostConstruct
     protected void findFromApi() {
-        // 社外用
-        // RestTemplate rest = new RestTemplate();
-
-        // 社内用proxy設定
-        RestTemplate rest = restTemplate();
+        // プロキシ設定が不要の場合
+        RestTemplate rest = new RestTemplate();
+        // プロキシ設定が必要の場合
+        // RestTemplate rest = myRest("proxy.co.jp", 8080);
 
         /** ジャンル一覧検索結果 */
         final String MAP_GENRES = "https://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/genres?cc=jp";

@@ -29,7 +29,7 @@
                     <div class="panel panel-default sidebar-menu">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title">Runking</h3>
+                            <h3 class="panel-title">Ranking</h3>
                         </div>
 
                         <div class="panel-body">

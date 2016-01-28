@@ -35,28 +35,32 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     static final String LOOKUP_ID_URL = "https://itunes.apple.com/lookup?country=JP&id=";
 
     /**
-     * 社内での開発の際必要となるプロキシ設定。
-     * @return 社内用プロキシが設定されたrestTemplate
-     * @note 社内の設定のためpushしない！！
+     * プロキシ設定を必要とする場合のRestTemplate生成メソッド。
+     * @param host ホスト名
+     * @param portNo ポート番号
+     * @return プロキシが設定されたrestTemplate
      */
-    private RestTemplate restTemplate() {
-        final String PROXY_HOST = "tkyproxy.intra.tis.co.jp";
-        final int PROXY_PORT = 8080;
+    private RestTemplate myRest(String host, int portNo) {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        factory.setProxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(PROXY_HOST, PROXY_PORT)));
+        factory.setProxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host, portNo)));
 
         return new RestTemplate(factory);
     }
 
     @Override
     public List<Item> findTop10(String genreId, String subgenreId) throws IOException {
+        // プロキシ設定が不要の場合
+        RestTemplate rest = new RestTemplate();
+        // プロキシ設定が必要の場合
+        // RestTemplate rest = myRest("tkyproxy.intra.tis.co.jp", 8080);
+
         String url = new String();
         if(genreId.equals(MOVIE_ID)) {
             url = SEARCH_URL + "topmovies/limit=10/genre=" + subgenreId + "/json";
         } else if(genreId.equals(MUSIC_ID)) {
             url = SEARCH_URL + "topsongs/limit=10/genre=" + subgenreId + "/json";
         }
-        String jsonString = restTemplate().getForObject(url, String.class);
+        String jsonString = rest.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> top10Map = (Map<String, Object>)mapper.readValue(jsonString, Map.class).get("feed");
         List<Map<String, Object>> top10List = (List<Map<String, Object>>)top10Map.get("entry");
@@ -70,7 +74,12 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
 
     public Item searchItem(String genreId, String id) throws IOException {
-        String jsonString = restTemplate().getForObject(LOOKUP_ID_URL + id, String.class);
+        // プロキシ設定が不要の場合
+        RestTemplate rest = new RestTemplate();
+        // プロキシ設定が必要の場合
+        // RestTemplate rest = myRest("proxy.co.jp", 8080);
+
+        String jsonString = rest.getForObject(LOOKUP_ID_URL + id, String.class);
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> mapItem = (Map<String, Object>) ((List<Object>) mapper.readValue(jsonString, Map.class).get("results")).get(0);
 
