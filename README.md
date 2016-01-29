@@ -79,8 +79,8 @@
 同フォルダ内の環境構築手順書を元に、インターン当日までに環境構築を行って下さい。
 
 
-
-## 本プロジェクトの構成
+## 参考
+### 本プロジェクトの構成
 
 
 
@@ -120,13 +120,10 @@ tiscon1
 
 ```
 
+---
 
-
-## 技術仕様
-
-### Spring Boot
-
-
+### 技術仕様
+#### Spring Boot
 
 アプリケーションは、Spring Bootを使って構築されています。Spring Bootに関しては以下をお読みください。
 
@@ -140,7 +137,7 @@ tiscon1
 
 
 
-### iTunes API
+#### iTunes API
 
 アプリケーションではiTunes APIを使用しています。
 
@@ -151,9 +148,9 @@ tiscon1
 iTunes APIに関しては以下をお読みください。
 
 - [Search APIリファレンス](https://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html)
-
-
-
+  
+  
+  
 本アプリケーションでは以下を取得するためにAPIを使用しています。
 
 - Movie、Musicのサブジャンル
@@ -161,3 +158,9 @@ iTunes APIに関しては以下をお読みください。
 - Movie、MusicのTop10
 
 - 商品情報
+
+---
+
+### リンク
+事前学習にご利用ください。  
+[【システムエンジニア Advent Calendar 2015】](http://qiita.com/advent-calendar/2015/se)
