@@ -306,7 +306,7 @@
 
                         <p class="social">
                             <a href="http://www.facebook.com/tis.recruit" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                            <a href="mailto:tis2017★s-hr.jp" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
+                            <a href="mailto:recruit★tis.co.jp" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
                             <h6>メールアドレスの★を@に変換してください。</h6>
                         </p>
 
