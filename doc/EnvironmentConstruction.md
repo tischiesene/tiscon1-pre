@@ -160,11 +160,7 @@ WAITTに関しては下記記事をお読みください。
 
 ### オンライン上での動作確認
 Heroku上にデプロイし、オンラインで動作することを確認しましょう。  
-Herokuにログインした状態で、下記ボタンを押下してください。  
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)  
-
-
+Herokuにログインした状態で、READMEの[環境構築]にある、デプロイボタンを押下してください。
 
 
 ## 参考

@@ -74,9 +74,14 @@
 
  - 動作確認
 
+docフォルダ内のEnvironmentConstructionを参考に、環境構築をしてください。
+
+ローカル上での動作確認まで終わったら、オンライン上での動作確認をします。  
+Herokuにログインした状態で、下のDeployボタンを押下してください。
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)  
 
 
-同フォルダ内の環境構築手順書を元に、インターン当日までに環境構築を行って下さい。
 
 
 ## 参考
