@@ -6,16 +6,16 @@
         <div class="col-md-12">
             <div id="main-slider">
                 <div class="item">
-                    <img src="img/main-slider1.jpg" alt="" class="img-responsive">
+                    <img src="img/index-img1.jpg" alt="" class="img-responsive">
                 </div>
                 <div class="item">
-                    <img class="img-responsive" src="img/main-slider2.jpg" alt="">
+                    <img class="img-responsive" src="img/index-img2.jpg" alt="">
                 </div>
                 <div class="item">
-                    <img class="img-responsive" src="img/main-slider3.jpg" alt="">
+                    <img class="img-responsive" src="img/index-img3.jpg" alt="">
                 </div>
                 <div class="item">
-                    <img class="img-responsive" src="img/main-slider4.jpg" alt="">
+                    <img class="img-responsive" src="img/index-img4.jpg" alt="">
                 </div>
             </div>
             <!-- /#main-slider -->
