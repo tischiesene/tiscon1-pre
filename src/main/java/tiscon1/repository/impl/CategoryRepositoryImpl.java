@@ -27,8 +27,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
      */
     public static final String MOVIE_ID = "33";
     public static final String MUSIC_ID = "34";
-    static final String SEARCH_URL = "https://itunes.apple.com/jp/rss/";
-    static final String LOOKUP_ID_URL = "https://itunes.apple.com/lookup?country=JP&id=";
+    static final String SEARCH_URL = "https://itunes.apple.com/jp/rss/top{genreName}/limit=10/genre={subgenreId}/json";
+    static final String LOOKUP_ID_URL = "https://itunes.apple.com/lookup?country=JP&id={id}";
 
     /**
      * プロキシ設定を必要とする場合のRestTemplate生成メソッド。
@@ -44,6 +44,16 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         return new RestTemplate(factory);
     }
 
+    private String getGenreName(String genreId) {
+        if (genreId == null) {
+            throw new IllegalArgumentException("geneId is null");
+        } else switch (genreId) {
+            case MOVIE_ID: return "movies";
+            case MUSIC_ID: return "songs";
+            default: throw new IllegalArgumentException("Unknown genre: " + genreId);
+        }
+    }
+
     @Override
     public List<Item> findTop10(String genreId, String subgenreId) throws IOException {
         // プロキシ設定が不要の場合
@@ -51,13 +61,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         // プロキシ設定が必要の場合
         // RestTemplate rest = myRest("proxy.co.jp", 8080);
 
-        String url = new String();
-        if (genreId.equals(MOVIE_ID)) {
-            url = SEARCH_URL + "topmovies/limit=10/genre=" + subgenreId + "/json";
-        } else if (genreId.equals(MUSIC_ID)) {
-            url = SEARCH_URL + "topsongs/limit=10/genre=" + subgenreId + "/json";
-        }
-        String jsonString = rest.getForObject(url, String.class);
+        String jsonString = rest.getForObject(SEARCH_URL, String.class, getGenreName(genreId), subgenreId);
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> top10Map = (Map<String, Object>) mapper.readValue(jsonString, Map.class).get("feed");
         List<Map<String, Object>> top10List = (List<Map<String, Object>>) top10Map.get("entry");
@@ -76,7 +80,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         // プロキシ設定が必要の場合
         // RestTemplate rest = myRest("proxy.co.jp", 8080);
 
-        String jsonString = rest.getForObject(LOOKUP_ID_URL + id, String.class);
+        String jsonString = rest.getForObject(LOOKUP_ID_URL, String.class, id);
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> mapItem = (Map<String, Object>) ((List<Object>) mapper.readValue(jsonString, Map.class).get("results")).get(0);
 
