@@ -9,7 +9,6 @@
 
     <properties>
         <waitt.version>1.0.0</waitt.version>
-        <ninja.mode>dev</ninja.mode>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
