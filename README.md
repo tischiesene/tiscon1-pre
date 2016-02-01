@@ -74,7 +74,8 @@
 
  - 動作確認
 
-docフォルダ内のEnvironmentConstructionを参考に、環境構築をしてください。
+下記リンクtiscon1-doc内のREADMEを参考に、環境構築をしてください。
+[【tiscon1-doc】](https://github.com/tiscon/tiscon1-doc)
 
 ローカル上での動作確認まで終わったら、オンライン上での動作確認をします。  
 Herokuにログインした状態で、下のDeployボタンを押下してください。
