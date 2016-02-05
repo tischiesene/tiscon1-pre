@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 /**
  * 商品格納用抽象化Model。
+ *
  * @author fujiwara
  */
 @Data

@@ -1,19 +1,17 @@
 package tiscon1.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-
-import java.io.Serializable;
 
 /**
  * 音楽情報格納用Model。
- * todo 形なんとかする。
+ *
  * @author fujiwara
  */
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Music extends Item {
     private String artist;
     private String album;

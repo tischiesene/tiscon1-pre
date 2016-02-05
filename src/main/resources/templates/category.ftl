@@ -75,17 +75,14 @@
                             </ul>
                         </div>
                     </div>
+                    <!-- *** 検索機能用エリア
                     <div class="panel panel-default sidebar-menu">
                         <div class="panel-heading">
                             <h3 class="panel-title">Search</h3>
-                            <!-- *** 検索機能を追加したい *** -->
                         </div>
                     </div>
+                    *** -->
                     <!-- *** MENUS AND FILTERS END *** -->
-
-                    <div class="banner">
-                        <a href="http://www.tis.co.jp/recruit/"><img src="http://www.tis.co.jp/recruit/images/mv/mv01.jpg" alt="TIS_RECRUITING" class="img-responsive"></a>
-                    </div>
                 </div>
 
                 <div class="col-md-9">

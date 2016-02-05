@@ -6,8 +6,6 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author kawasima

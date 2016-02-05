@@ -74,13 +74,33 @@
 
  - 動作確認
 
+下記リンクtiscon1-doc内のREADMEを参考に、環境構築をしてください。
+[【tiscon1-doc】](https://github.com/tiscon/tiscon1-doc)
+
+ローカル上での動作確認まで終わったら、オンライン上での動作確認をします。  
+Herokuにログインした状態で、下のDeployボタンを押下してください。
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)  
 
 
-同フォルダ内の環境構築手順書を元に、インターン当日までに環境構築を行って下さい。
+## 提供機能(2016/2/1現在)
+本アプリケーションで提供されているのは以下の機能です。  
+- ログイン機能
+- カテゴリ別Top10表示
+- 詳細画面表示
+<br>
+
+**提供予定機能**  
+今後提供予定の機能はこちらです。
+- ログアウト機能
+<br>
+
+上記以外にも機能追加・更新があった場合、順次メールでご連絡いたします。
 
 
 
-## 本プロジェクトの構成
+## 参考
+### 本プロジェクトの構成
 
 
 
@@ -120,13 +140,10 @@ tiscon1
 
 ```
 
+---
 
-
-## 技術仕様
-
-### Spring Boot
-
-
+### 技術仕様
+#### Spring Boot
 
 アプリケーションは、Spring Bootを使って構築されています。Spring Bootに関しては以下をお読みください。
 
@@ -140,7 +157,7 @@ tiscon1
 
 
 
-### iTunes API
+#### iTunes API
 
 アプリケーションではiTunes APIを使用しています。
 
@@ -151,9 +168,9 @@ tiscon1
 iTunes APIに関しては以下をお読みください。
 
 - [Search APIリファレンス](https://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html)
-
-
-
+  
+  
+  
 本アプリケーションでは以下を取得するためにAPIを使用しています。
 
 - Movie、Musicのサブジャンル
@@ -161,3 +178,9 @@ iTunes APIに関しては以下をお読みください。
 - Movie、MusicのTop10
 
 - 商品情報
+
+---
+
+### リンク
+事前学習にご利用ください。  
+[【システムエンジニア Advent Calendar 2015】](http://qiita.com/advent-calendar/2015/se)

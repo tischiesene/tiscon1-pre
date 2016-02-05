@@ -61,20 +61,14 @@
                             </ul>
                         </div>
                     </div>
+                    <!-- *** 検索機能用エリア
                     <div class="panel panel-default sidebar-menu">
-                        <!-- *** 検索入れたい *** -->
                         <div class="panel-heading">
                             <h3 class="panel-title">Search</h3>
                         </div>
                     </div>
-
+                    *** -->
                     <!-- *** MENUS AND FILTERS END *** -->
-
-                    <div class="banner">
-                        <a href="#">
-                            <a href="http://www.tis.co.jp/recruit/"><img src="http://www.tis.co.jp/recruit/images/mv/mv01.jpg" alt="TIS_RECRUITING" class="img-responsive"></a>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="col-md-9">
@@ -84,8 +78,6 @@
                             <div id="mainImage">
                                 <img src=${item.image} alt="${item.title?html}" width="400" class="img-responsive">
                             </div>
-                            <!-- *** リボン入れたい *** -->
-                            <!-- /.ribbon -->
 
                         </div>
                         <div class="col-sm-6">

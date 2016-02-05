@@ -7,15 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import tiscon1.exception.SystemException;
-import tiscon1.model.Genre;
 import tiscon1.repository.CategoryRepository;
 import tiscon1.repository.GenreRepository;
 
-import java.io.IOException;
-import java.util.List;
-
 /**
- * todo
  * @author fujiwara
  */
 @Controller
@@ -25,12 +20,12 @@ public class DetailController {
     @Autowired
     GenreRepository genreRepository;
 
-    @RequestMapping(value={"/detail","/my/detail"}, method=RequestMethod.GET)
+    @RequestMapping(value = {"/detail", "/my/detail"}, method = RequestMethod.GET)
     public String detail(@RequestParam("genreId") String genreId, @RequestParam("subgenreId") String subgenreId, @RequestParam("itemId") String itemId, Model model) {
         model.addAttribute("genreId", genreId);
         model.addAttribute("subgenreId", subgenreId);
         model.addAttribute("genreName", genreRepository.getGenreName(genreId));
-        model.addAttribute("subgenreName",genreRepository.getSubGenreName(genreId, subgenreId));
+        model.addAttribute("subgenreName", genreRepository.getSubGenreName(genreId, subgenreId));
 
         try {
             model.addAttribute("item", categoryRepository.searchItem(genreId, itemId));

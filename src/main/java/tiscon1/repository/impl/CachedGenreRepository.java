@@ -1,5 +1,6 @@
 package tiscon1.repository.impl;
 
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import tiscon1.model.Genre;
@@ -11,9 +12,6 @@ import java.net.Proxy;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-// 社内環境での設定
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 
 /**
  * @author kawasima
@@ -30,7 +28,8 @@ public class CachedGenreRepository implements GenreRepository {
 
     /**
      * プロキシ設定を必要とする場合のRestTemplate生成メソッド。
-     * @param host ホスト名
+     *
+     * @param host   ホスト名
      * @param portNo ポート番号
      * @return プロキシが設定されたrestTemplate
      */
@@ -52,9 +51,8 @@ public class CachedGenreRepository implements GenreRepository {
         final String MAP_GENRES = "https://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/genres?cc=jp";
 
         Map<String, Map<String, Object>> mapGenres = rest.getForObject(MAP_GENRES, Map.class);
-        Map<String, Map<String, Map<String, Map<String, Object>>>> mapMovies = rest.getForObject(MAP_GENRES+"&id="+MOVIE_ID, Map.class);
-        String temp = rest.getForObject(MAP_GENRES+"&id=33", String.class);
-        Map<String, Map<String, Map<String, Map<String, Object>>>> mapMusic =  rest.getForObject(MAP_GENRES+"&id="+MUSIC_ID, Map.class);
+        Map<String, Map<String, Map<String, Map<String, Object>>>> mapMovies = rest.getForObject(MAP_GENRES + "&id=" + MOVIE_ID, Map.class);
+        Map<String, Map<String, Map<String, Map<String, Object>>>> mapMusic = rest.getForObject(MAP_GENRES + "&id=" + MUSIC_ID, Map.class);
 
 
         genres = mapGenres.values().stream()
@@ -100,9 +98,9 @@ public class CachedGenreRepository implements GenreRepository {
 
     @Override
     public String getGenreName(String genreId) {
-        if(genreId.equals(MOVIE_ID)) {
+        if (genreId.equals(MOVIE_ID)) {
             return "MOVIE";
-        } else if(genreId.equals(MUSIC_ID)) {
+        } else if (genreId.equals(MUSIC_ID)) {
             return "MUSIC";
         } else {
             return null;
@@ -111,13 +109,13 @@ public class CachedGenreRepository implements GenreRepository {
 
     @Override
     public String getSubGenreName(String genreId, String subgenreId) {
-        if(genreId.equals(MOVIE_ID)) {
+        if (genreId.equals(MOVIE_ID)) {
             for (Genre g : findMovieGenres()) {
                 if (g.getId().equals(subgenreId)) {
                     return g.getName();
                 }
             }
-        } else if(genreId.equals(MUSIC_ID)) {
+        } else if (genreId.equals(MUSIC_ID)) {
             for (Genre g : findMusicGenres()) {
                 if (g.getId().equals(subgenreId)) {
                     return g.getName();
